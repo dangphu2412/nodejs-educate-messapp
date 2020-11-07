@@ -1,0 +1,38 @@
+{
+  "name": "messenger",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./dist/bin/www",
+    "server": "babel-node ./src/bin/www",
+    "dev": "nodemon --exec babel-node ./src/bin/www",
+    "build": "babel ./src --out-dir dist --copy-files"
+  },
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "cookie-parser": "^1.4.5",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-validator": "^6.5.0",
+    "firebase-admin": "^8.12.1",
+    "http-errors": "~1.6.3",
+    "knex": "^0.19.5",
+    "method-override": "^3.0.0",
+    "morgan": "~1.9.1",
+    "pg": "^7.18.2",
+    "pug": "^2.0.4",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}
