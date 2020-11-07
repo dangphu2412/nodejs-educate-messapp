@@ -4,8 +4,9 @@ import routes from '../routes/index';
 export default function (app) {
   app.use(methodOverride('X-HTTP-Method-Override'));
 
+  // Required to use patch, put, delete ...
   app.use(
-    methodOverride((req) => {
+    methodOverride(req => {
       if (req.body && typeof req.body === 'object' && '_method' in req.body) {
         const method = req.body._method;
         delete req.body._method;
@@ -17,6 +18,7 @@ export default function (app) {
     }),
   );
 
+  // Init firebase config to view
   app.use(async (req, res, next) => {
     res.redirectBack = () => {
       const backURL = req.header('Referer') || '/';
