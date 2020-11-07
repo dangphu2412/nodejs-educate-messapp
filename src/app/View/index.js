@@ -14,4 +14,8 @@ router.get('/register-phone', (req, res) => res.render('app/login-phone-number')
 
 router.get('/register-email', (req, res) => res.render('app/auth/register-email'));
 
-export default router;
+router.get('/conversations', (req, res) => res.render('app/conversation/index'));
+
+router.get('/', (req, res) => res.redirect('/conversations'));
+
+export const viewRouter = router;

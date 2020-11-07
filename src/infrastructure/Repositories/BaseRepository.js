@@ -1,6 +1,6 @@
 import knex from '../../database/connection';
 
-class BaseRepository {
+export class BaseRepository {
   constructor(tableName) {
     this.tableName = tableName;
   }
@@ -41,5 +41,3 @@ class BaseRepository {
     return this.cloneQuery().where(clauses).delete();
   }
 }
-
-export default BaseRepository;
