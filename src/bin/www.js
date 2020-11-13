@@ -6,10 +6,30 @@
 
 import debugLib from 'debug';
 import http from 'http';
-import io from 'socket.io';
-import app from '../app';
+import app from '..';
 
 const debug = debugLib('messenger:server');
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  const port = parseInt(val, 10);
+
+  if (Number.isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
 /**
  * Get port from environment and store in Express.
  */
@@ -22,48 +42,6 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-const socket = io(server);
-
-socket.on('connection', (socket) => {
-  socket.emit("test", "hello cu tuong");
-  console.log('user connected');
-  socket.on('test2', (msg) => {
-    console.log(msg);
-  })
-});
-
-
-
-server.listen(port, ()=> {
-  console.log(`Server is listening on ${port}`);
-});
-
-server.on('error', onError);
-server.on('listening', onListening);
-
-/**
- * Normalize a port into a number, string, or false.
- */
-
-function normalizePort(val) {
-  const port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-}
 
 /**
  * Event listener for HTTP server "error" event.
@@ -104,3 +82,14 @@ function onListening() {
     : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
 }
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port, () => {
+  console.log(`Server is listening on ${port}`);
+});
+
+server.on('error', onError);
+server.on('listening', onListening);

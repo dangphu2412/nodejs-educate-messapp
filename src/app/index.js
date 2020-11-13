@@ -1,11 +1,13 @@
 import express from 'express';
-import { authRouter } from '../app/Api/Auth';
-import { viewRouter } from '../app/View';
+import { authRouter } from './Api/Auth';
+import { userRouter } from './Api/User';
+import { viewRouter } from './View';
 
 const router = express.Router();
 
 // Using route of module
 router.use(authRouter);
+router.use(userRouter);
 router.use(viewRouter);
 
 export default router;

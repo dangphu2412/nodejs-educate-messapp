@@ -1,5 +1,5 @@
 import methodOverride from 'method-override';
-import routes from '../routes/index';
+import routes from '../app/index';
 
 export default function (app) {
   app.use(methodOverride('X-HTTP-Method-Override'));
